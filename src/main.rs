@@ -47,8 +47,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Pattern match to extract and display the text property
     if let Rest(gemini_response) = gemresults {
-        if let Some(candidate) = gemini_response.candidates.get(0) {
-            if let Some(part) = candidate.content.parts.get(0) {
+        if let Some(candidate) = gemini_response.candidates.first() {
+            if let Some(part) = candidate.content.parts.first() {
                 if let Some(text) = &part.text {
                     println!("{}", text);
                 }
